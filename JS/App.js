@@ -1,6 +1,3 @@
 import {DomModification} from './DomModification.js';
-new DomModification();
+new DomModification().render();
 
-// import { TaskList } from './TaskList.js';
-// const taskList = new TaskList();
-// taskList.addTask('');

@@ -1,19 +1,23 @@
-import {TaskList} from './TaskList.js';
-const taskList = new TaskList();
+import { Events } from './EventListeners.js';
+import { ManageData } from './ManageData.js';
 const addButton = document.getElementById('add-button');
 const inputTask = document.getElementById('input-task');
-
+const taskListElement = document.getElementById('list-tasks');
+const event = new Events();
+const manageData = new ManageData();
 export class DomModification {
-    constructor(){
-        addButton.addEventListener('click', ()=>{
-            taskList.addTask(inputTask.value);
-        });
+    constructor(){}
+    render(){
+            event.render(addButton,inputTask,taskListElement);
+            manageData.loadData(taskListElement);
+            // localStorage.removeItem("tasks");
     }
     createTaskItem(inputValue){
         const taskItem = document.createElement('li');
-        taskItem.innerText=inputValue;
+        taskItem.innerText=inputValue
         taskItem.appendChild(this.createEditButton());
         taskItem.appendChild(this.createRemoveButton());
+        inputTask.value="";
         return taskItem;
     }
     createRemoveButton(){
@@ -26,11 +30,4 @@ export class DomModification {
         editElement.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
         return editElement;
     }
-//     markTasks(){
-//         taskList.addEventListener("click", function(event) {
-//         if(event.target.tagName === "LI") {
-//             event.target.classList.toggle("checked");
-//         }
-//     })
-// }
 }

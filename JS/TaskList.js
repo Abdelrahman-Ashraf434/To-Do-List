@@ -1,22 +1,17 @@
 import { DomModification } from "./DomModification.js";
-
+import { ManageData } from "./ManageData.js";
+const manageData = new ManageData();
 export class TaskList{
-     taskArray=[];
      constructor(){}
-     addTask(inputValue) {
+     addTask(inputValue,taskListElement) {
         if(inputValue === '') {
             alert('You need to write something first');
         }
         else{
-            const add = new DomModification();
-            this.taskArray.push(inputValue);
-            add.createTaskItem(inputValue);
-            console.log(this.taskArray);
+            const create = new DomModification();
+            taskListElement.appendChild(create.createTaskItem(inputValue));
+            manageData.saveData(taskListElement);
+            manageData.loadData(taskListElement);
         }
-    }
-    removeTask(taskItem) {
-        this.taskArray.splice(this.taskArray.indexOf(taskItem), 1);
-        console.log(this.taskArray);
-    }
-    
+    }    
 }
