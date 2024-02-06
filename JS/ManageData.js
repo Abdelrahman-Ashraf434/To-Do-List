@@ -8,6 +8,4 @@ export class ManageData {
        }
        taskList.innerHTML = localStorage.getItem('tasks');
    }
-   // loadData();
-   // localStorage.removeItem("tasks");
 }

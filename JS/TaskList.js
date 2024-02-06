@@ -11,7 +11,6 @@ export class TaskList{
             const create = new DomModification();
             taskListElement.appendChild(create.createTaskItem(inputValue));
             manageData.saveData(taskListElement);
-            manageData.loadData(taskListElement);
         }
     }    
 }
